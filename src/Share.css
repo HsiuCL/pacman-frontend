@@ -1,0 +1,57 @@
+.blur {
+    backdrop-filter: blur(8px) !important;
+}
+
+.bg-transparant {
+    background-color: transparent !important;
+}
+
+.no-resize {
+    resize: none !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.no-overflow {
+    overflow: hidden !important;
+}
+
+.no-toggle-arrow::after {
+    display: none !important;
+}
+
+.centered {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.btn-no-border {
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+}
+
+.w-fit-content {
+    display: inline !important;
+    width: fit-content !important;
+}
+
+.h-fit-content {
+    display: inline !important;
+    height: fit-content !important;
+}
+
+.fit-content {
+    display: inline !important;
+    width: fit-content !important;
+    height: fit-content !important;
+}
+
+.btn-no-shadow {
+    border:none !important;
+    outline:none !important;
+}
