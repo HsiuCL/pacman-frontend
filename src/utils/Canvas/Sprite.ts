@@ -1,16 +1,13 @@
+import { EFourDir } from "components/Game";
+
 export type TFourDirSprite = {
-    left: Sprite,
-    right: Sprite,
-    up: Sprite,
-    down: Sprite
+    [EFourDir.left]: Sprite,
+    [EFourDir.right]: Sprite,
+    [EFourDir.up]: Sprite,
+    [EFourDir.down]: Sprite
 }
 
-export enum EFourDirSprite {
-    left = "left",
-    right = "right",
-    up = "up",
-    down = "down"
-}
+
 
 export const SpriteXStrategy = (sprite: Sprite) => {
     const startPoint = sprite.getStartPoint();
@@ -69,6 +66,7 @@ export class Sprite {
     }
 
     public updateFrame() {
+        console.log("frame: " + this.curFrame)
         this.curFrame = (this.curFrame + 1) % this._frameCnt;
         this._strategy(this);
     }

@@ -38,16 +38,8 @@ export class RetCodeGenerator {
         this.noLogging = noLoggin ?? false;
     }
 
-    public getCode(): string {
-        return this.retCode;
-    }
-
-    public getMsg(): string {
-        return this.retMsg;
-    }
-
     protected logErr(msg: string, stack: any) {
-        if (process.env.DEBUG && !this.noLogging && this.retCode !== "0000") {
+        if (!this.noLogging && this.retCode !== "0000") {
             this.noLogging = true;
             console.log(stack)
         }
@@ -64,7 +56,7 @@ export class RetCodeGenerator {
 
             if (guard.withRetMsg()) {
                 const msg = (args as RetCodeExtMsg).getMsg();
-                newMsg = msg ? `[ ${this.retMsg} ] ${msg}` : `[ ${this.retMsg} ]`;
+                newMsg = msg ? `[ ${this.retMsg} ] [ ${msg} ]` : `[ ${this.retMsg} ]`;
                 retCode = new RetCode<T>(
                     this,
                     this.retCode,
@@ -72,11 +64,11 @@ export class RetCodeGenerator {
                 );
             } else if (guard.withRetMsgAndRetObj()) {
                 const rawMsg = (args as RetCodeExtMsgObj).getObj();
-                const msg = (args as RetCodeExtMsgObj).getMsg();
+                const msg = rawMsg.getMsg();
 
                 const obj = (args as RetCodeExtMsgObj).getObj();
 
-                newMsg = msg ? `[ ${this.retMsg} ] ${msg}` : `[ ${this.retMsg} ]`;
+                newMsg = msg ? `[ ${this.retMsg} ] [ ${msg} ]` : `[ ${this.retMsg} ]`;
                 retCode = new RetCode<T>(
                     this,
                     this.retCode,
@@ -123,7 +115,7 @@ export class RetCodeExtMsg {
             return buildStr;
         }
 
-        return `[ ${this.msg} ]`;
+        return this.msg;
     }
 };
 
@@ -151,13 +143,11 @@ export const RetCodeFactory = {
 
     // 1XXX : Data Error
     UIDExisted: new RetCodeGenerator("1000", "UID Existed Error"),
-    UIDUnknown: new RetCodeGenerator("1001", "UID Unknown Error"),
+    UIDUnknown: new RetCodeGenerator("1000", "UID Unknown Error"),
     UsernameExisted: new RetCodeGenerator("1002", "Username Existed Error"),
     LoginAuthNotExisted: new RetCodeGenerator("1003", "Login Auth Does Not Exist Error"),
     InvalidUsernameOrPassword: new RetCodeGenerator("1004", "Invalid Username Or Password"),
     InvalidLoginAuth: new RetCodeGenerator("1005", "Invalid Login Auth"),
-    InvalidEmailOrPassword: new RetCodeGenerator("1006", "Invalid Email Or Password"),
-    InvalidArguments: new RetCodeGenerator("1007", "Invalid Arguments"),
 
     // 2XXX : System Error (Conventional Error)
     SystemError: new RetCodeGenerator("2000", "System Error"),
@@ -167,6 +157,7 @@ export const RetCodeFactory = {
 
     // 4XXX : Calculation Error
     DataParseError: new RetCodeGenerator("4000", "Data Parse Error"),
+    ArgumentError: new RetCodeGenerator("4001", "Argument Error"),
 
     // 9XXX: Unknown Error
     UnknownError: new RetCodeGenerator("9000", "Unknown Error"),

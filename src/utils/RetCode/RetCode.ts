@@ -6,6 +6,7 @@ export class RetCode<T = void> {
     protected retMsg;
     protected retObj;
     protected err;
+    protected logged;
 
     public constructor(retCodeGen: RetCodeGenerator, retCode: string, retMsg?: string, retObj?: T) {
         this.retCodeGen = retCodeGen;
@@ -13,6 +14,7 @@ export class RetCode<T = void> {
         this.retMsg = retMsg ?? "";
         this.retObj = retObj;
         this.err = new Error(this.retMsg);
+        this.logged = false;
     }
 
     public reGenRetCode<T=void>(obj?: T) {
@@ -22,14 +24,8 @@ export class RetCode<T = void> {
         return this.retCodeGen.toRetCode<T>(obj);
     }
 
-    /*
     public getRetCodeGen() {
         return this.retCodeGen;
-    }
-    */
-
-    public isRetCode(retCodeGen: RetCodeGenerator) {
-        return this.getCode() === retCodeGen.getCode();
     }
 
     public getErr() {
@@ -61,6 +57,13 @@ export class RetCode<T = void> {
         }
         
         return {} as T;
+    }
+
+    public logErr(force?: boolean) {
+        if (force === true || !this.logged) {
+            this.logged = true;
+            console.log(this.getErr().stack);
+        }
     }
 
     /**

@@ -1,12 +1,10 @@
-import { logErr } from "../Error/ErrorTool";
-import { RetCode } from "../RetCode/RetCode";
-import { RetCodeExtMsg, RetCodeFactory } from "../RetCode/RetCodeFactory";
+import { RetCode } from "utils/RetCode/RetCode";
+import { RetCodeExtMsg, RetCodeFactory } from "utils/RetCode/RetCodeFactory"
 
-export const safeParseInt = (num: string): RetCode<number>  =>{
+export const safeParseInt = (num: string): RetCode<number> => {
     try {
-        return RetCodeFactory.Success.toRetCode(parseInt(num));
+        return RetCodeFactory.Success.toRetCode<number>(parseInt(num));
     } catch (error) {
-        logErr(error);
-        return RetCodeFactory.DataParseError.toRetCode(new RetCodeExtMsg(["parseInt", num]));
+        return RetCodeFactory.DataParseError.toRetCode<number>(new RetCodeExtMsg(["parseInt", num]));
     }
 }
