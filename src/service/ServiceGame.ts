@@ -1,7 +1,7 @@
 import { EFourDir, TBoard } from "components/Game";
 import { APIGame } from "./API/APIGame";
 import { RetCode } from "utils/RetCode/RetCode";
-import { asyncFailWrap } from "utils/error/errorTool";
+import { asyncFailWrap } from "utils/myerror/errorTool";
 
 export class ServiceGame {
     @asyncFailWrap
