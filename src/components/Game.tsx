@@ -1,4 +1,3 @@
-import { logErr } from "../utils/error/ErrorTool";
 import { useEffect, useRef, useState } from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -7,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Sprite, SpriteXStrategy, TFourDirSprite } from "../utils/Canvas/Sprite";
 import { updateStateOnValChange } from "../utils/lib/React/stateHook";
 import { ServiceGame } from "service/ServiceGame";
+import { logErr } from "utils/error/ErrorTool";
 
 enum EItem {
     movable = 0,
