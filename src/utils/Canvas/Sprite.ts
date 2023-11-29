@@ -66,7 +66,6 @@ export class Sprite {
     }
 
     public updateFrame() {
-        console.log("frame: " + this.curFrame)
         this.curFrame = (this.curFrame + 1) % this._frameCnt;
         this._strategy(this);
     }
