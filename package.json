@@ -48,5 +48,8 @@
   },
   "moduleNameMapper": {
     "~src/(.*)": "<rootDir>/src/$1"
+  },
+  "devDependencies": {
+    "case-sensitive-paths-webpack-plugin": "^2.4.0"
   }
 }

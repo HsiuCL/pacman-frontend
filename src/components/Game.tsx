@@ -387,6 +387,7 @@ const Game = () => {
                 <div id="new-post" className="new-post position-absolute top-50 start-50 translate-middle rounded" style={{backgroundColor: "rgb(30, 30, 50)"}}>
                     <div className="card d-flex flex-column w-100 h-100 p-3 bg-transparant">
                         <div>
+                            <div className="display-6">Game Over</div>
                             <p className="display-6">Final Score</p>
                             <p>{board?.score}</p>
                         </div>
