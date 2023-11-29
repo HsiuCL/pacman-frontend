@@ -2,7 +2,7 @@ import path from "path";
 import { DevTool } from "../dev/DevTool";
 import { RetCode } from "../RetCode/RetCode";
 import { RetCodeExtMsg, RetCodeFactory } from "../RetCode/RetCodeFactory";
-import { logErr } from "utils/error/ErrorTool";
+import { logErr } from "utils/error/errorTool";
 
 enum HTTPMethod {
     POST = "POST",

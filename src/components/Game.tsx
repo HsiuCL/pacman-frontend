@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Sprite, SpriteXStrategy, TFourDirSprite } from "../utils/Canvas/Sprite";
 import { updateStateOnValChange } from "../utils/lib/React/stateHook";
 import { ServiceGame } from "service/ServiceGame";
-import { logErr } from "utils/error/ErrorTool";
+import { logErr } from "utils/error/errorTool";
 
 enum EItem {
     movable = 0,

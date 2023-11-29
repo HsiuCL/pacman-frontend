@@ -1,6 +1,6 @@
 import { RetCode } from "utils/RetCode/RetCode";
 import { RetCodeFactory } from "utils/RetCode/RetCodeFactory";
-import { logErr } from "utils/error/ErrorTool";
+import { logErr } from "utils/error/errorTool";
 
 export class JSONTool {
     public static deepClone = <T> (obj: T) : RetCode<T> => {
