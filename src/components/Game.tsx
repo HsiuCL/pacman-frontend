@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Sprite, SpriteXStrategy, TFourDirSprite } from "../utils/Canvas/Sprite";
 import { updateStateOnValChange } from "../utils/lib/React/stateHook";
 import { ServiceGame } from "service/ServiceGame";
-import { logErr } from "../utils/error/errorTool";
 
 enum EItem {
     movable = 0,
@@ -177,7 +176,7 @@ const Game = () => {
                 settings.ghostNumber, settings.ghostSpeed, settings.life)).safeGetObj()
             setBoard(curBoard);
         } catch (error) {
-            logErr(error);
+            //pass
         }
     }
 
@@ -266,7 +265,7 @@ const Game = () => {
             }
             setBoard(curBoard);
         } catch (error) {
-            logErr(error);
+            //pass
         }
    }
 
@@ -314,7 +313,7 @@ const Game = () => {
             })
             gameIntervalRef.current = [];
         } catch (error) {
-            logErr(error);
+            //pass
         }
     }
 
