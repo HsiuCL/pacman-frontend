@@ -379,6 +379,11 @@ const Game = () => {
         startGame();
     }
 
+    const handleNextLevel = () => {
+        setShowGameOver(false);
+        setSettings(prevData => ({...prevData, level: prevData.level + 1}));
+    }
+
     return (
         <div className="d-flex flex-column justify-content-center" style={{minHeight: "100vh"}}>
             {   showGameOver &&
@@ -387,11 +392,18 @@ const Game = () => {
                 <div id="new-post" className="new-post position-absolute top-50 start-50 translate-middle rounded" style={{backgroundColor: "rgb(30, 30, 50)"}}>
                     <div className="card d-flex flex-column w-100 h-100 p-3 bg-transparant">
                         <div>
-                            <div className="display-6">Game Over</div>
-                            <p className="display-6">Final Score</p>
+                            {   board && board.pacman && board.pacman.life == 0 &&
+                                <div className="display-6">Game Over</div>
+                            }
+                            <p className="display-6">Score</p>
                             <p>{board?.score}</p>
                         </div>
-                        <button className="btn btn-success" onClick={handleRestartGame}>Restart</button>
+                        <div className="d-flex flex-row gap-4">
+                            <button className="btn btn-success" onClick={handleRestartGame}>Restart</button>
+                            {   board && board.pacman && board.pacman.life > 0 && settings.level < 2 &&
+                                <button className="btn btn-primary" onClick={handleNextLevel}>Next Level</button>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
